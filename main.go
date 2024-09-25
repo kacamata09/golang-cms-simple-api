@@ -6,7 +6,8 @@ import (
 	httpRoutes "go-clean-architecture-by-ahr/transport/http"
 
 	"github.com/labstack/echo"
-	_ "github.com/lib/pq"
+	// _ "github.com/lib/pq"
+	 _ "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
 )
 
@@ -22,9 +23,10 @@ func main() {
 	dbPort := viper.GetInt("database.port")
 	dbPass := viper.GetString("database.password")
 	dbName := viper.GetString("database.name")
-	connection := fmt.Sprintf("user=%s password=%s host=%s port=%d dbname=%s sslmode=disable", dbUser, dbPass, dbHost, dbPort, dbName)
+	// connection := fmt.Sprintf("user=%s password=%s host=%s port=%d dbname=%s sslmode=disable", dbUser, dbPass, dbHost, dbPort, dbName)
+	connection := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?param=value", dbUser, dbPass, dbHost, dbPort, dbName)
 
-	db, err := sql.Open("postgres", connection)
+	db, err := sql.Open("mysql", connection)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -41,5 +43,4 @@ func main() {
 
 	port := viper.GetInt("server.port")
     e.Start(fmt.Sprintf(":%d", port))
-	
 }

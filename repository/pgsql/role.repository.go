@@ -1,4 +1,4 @@
-package repositoryPgSQL
+package repositoryMySql
 
 import (
 	"database/sql"

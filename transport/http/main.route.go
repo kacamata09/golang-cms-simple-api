@@ -2,7 +2,7 @@ package httpRoutes
 
 import (
 	"database/sql"
-	repositoryPgSQL "go-clean-architecture-by-ahr/repository/pgsql"
+	repositoryMySql "go-clean-architecture-by-ahr/repository/pgsql"
 	handler "go-clean-architecture-by-ahr/transport/http/handlers"
 	"go-clean-architecture-by-ahr/transport/http/middleware"
 	"go-clean-architecture-by-ahr/usecase"
@@ -31,12 +31,12 @@ func StartHttp(e *echo.Echo, db *sql.DB) {
 	e.GET("/", homeHandler)
 
 	// role
-	roleRepo := repositoryPgSQL.CreateRepoRole(db)
+	roleRepo := repositoryMySql.CreateRepoRole(db)
 	roleUseCase := usecase.CreateRoleUseCase(roleRepo)
 	handler.RoleRoute(e, roleUseCase)
 
 	// user
-	userRepo := repositoryPgSQL.CreateRepoUser(db)
+	userRepo := repositoryMySql.CreateRepoUser(db)
 	userUseCase := usecase.CreateUserUseCase(userRepo)
 	handler.UserRoute(e, userUseCase)
 

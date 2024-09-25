@@ -1,4 +1,4 @@
-package repositoryPgSQL
+package repositoryMySql
 
 import (
 	"database/sql"
@@ -45,7 +45,7 @@ func (repo *repoUser) GetAll() ([]domain.User, error) {
 }
 
 func (repo *repoUser) GetByID(id string) (domain.User, error) {
-    row := repo.DB.QueryRow("SELECT * FROM users where id=$1", id)
+    row := repo.DB.QueryRow("SELECT * FROM users where id=?", id)
     fmt.Println(id)
     
     var data domain.User
@@ -66,7 +66,7 @@ func (repo *repoUser) GetByID(id string) (domain.User, error) {
 }
 
 func (repo *repoUser) Create(user *domain.User) error {
-    _, err := repo.DB.Exec("INSERT INTO users (fullname, username, email, password, role_id) values ($1, $2, $3, $4, $5)", 
+    _, err := repo.DB.Exec("INSERT INTO users (fullname, username, email, password, role_id) values (?, ?, ?, ?, ?)", 
     user.Fullname, user.Username, user.Email, user.Password, user.Role_id)
     return err
 }
