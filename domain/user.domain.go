@@ -2,7 +2,7 @@ package domain
 
 import (
 	// "database/sql"
-	"time"
+	// "time"
 	// "github.com/labstack/echo"
 )
 
@@ -15,10 +15,10 @@ type User struct {
 	Username string `json:"username"`
 	Email string `json:"email"`
 	Password string `json:"password"`
-	Last_login time.Time `json:"last_login"`
+	Last_login string `json:"last_login"`
 	Role_id string `json:"role_id"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
 }
 
 type UserRepository interface {

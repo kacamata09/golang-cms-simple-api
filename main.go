@@ -4,11 +4,14 @@ import (
 	"database/sql"
 	"fmt"
 	httpRoutes "go-clean-architecture-by-ahr/transport/http"
-
-	"github.com/labstack/echo"
-	// _ "github.com/lib/pq"
-	 _ "github.com/go-sql-driver/mysql"
 	"github.com/spf13/viper"
+	"github.com/labstack/echo"
+
+	//// driver for pgsql
+	// _ "github.com/lib/pq"
+
+	//// driver for mysql
+	 _ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -24,7 +27,7 @@ func main() {
 	dbPass := viper.GetString("database.password")
 	dbName := viper.GetString("database.name")
 	// connection := fmt.Sprintf("user=%s password=%s host=%s port=%d dbname=%s sslmode=disable", dbUser, dbPass, dbHost, dbPort, dbName)
-	connection := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?param=value", dbUser, dbPass, dbHost, dbPort, dbName)
+	connection := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", dbUser, dbPass, dbHost, dbPort, dbName)
 
 	db, err := sql.Open("mysql", connection)
 	if err != nil {
