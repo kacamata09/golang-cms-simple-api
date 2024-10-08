@@ -2,7 +2,7 @@ package httpRoutes
 
 import (
 	"database/sql"
-	repositoryMySql "go-clean-architecture-by-ahr/repository/pgsql"
+	repositoryMySql "go-clean-architecture-by-ahr/repository/mysql"
 	handler "go-clean-architecture-by-ahr/transport/http/handlers"
 	"go-clean-architecture-by-ahr/transport/http/middleware"
 	"go-clean-architecture-by-ahr/usecase"
