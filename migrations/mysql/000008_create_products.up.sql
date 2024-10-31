@@ -3,7 +3,7 @@ CREATE TABLE products (
     name VARCHAR(255) NOT NULL,
     price INT(11) NOT NULL,
     photo VARCHAR(255),
-    descripition TEXT,
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

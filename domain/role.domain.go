@@ -9,7 +9,6 @@ import (
 
 
 type Role struct {
-	// ID string `json:"id"`
 	ID string `json:"id"`
 	RoleName string `json:"role_name"`
 	RoleDesc string `json:"role_desc"`

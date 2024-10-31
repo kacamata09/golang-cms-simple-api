@@ -40,5 +40,17 @@ func StartHttp(e *echo.Echo, db *sql.DB) {
 	userUseCase := usecase.CreateUserUseCase(userRepo)
 	handler.UserRoute(e, userUseCase)
 
+	productRepo := repositoryMySql.CreateRepoProduct(db)
+	productUseCase := usecase.CreateProductUseCase(productRepo)
+	handler.ProductRoute(e, productUseCase)
+
+	savingRepo := repositoryMySql.CreateRepoSaving(db)
+	savingUseCase := usecase.CreateSavingUseCase(savingRepo)
+	handler.SavingRoute(e, savingUseCase)
+
+	savingHistoryRepo := repositoryMySql.CreateRepoHistorySaving(db)
+	savingHistoryUseCase := usecase.CreateSavingHistoryUseCase(savingHistoryRepo)
+	handler.SavingHistoryRoute(e, savingHistoryUseCase)
+
 
 }
