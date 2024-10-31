@@ -9,5 +9,5 @@ my clean architecture using golang with echo inspired by bxcodec's go clean arch
 install migrate module mysql:
 `go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest`
 exec migration:
-migrate -path db/migrations/mysql -database "mysql://root:password@tcp(127.0.0.1:3306)/dbname" up
+migrate -path ./migrations/mysql -database "mysql://root:password@tcp(127.0.0.1:3306)/dbname" up
 
