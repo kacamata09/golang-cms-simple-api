@@ -52,7 +52,7 @@ func (repo *repoUser) GetByID(id string) (domain.User, error) {
     var data domain.User
     
     err := row.Scan(&data.ID, &data.Fullname, &data.Username, &data.Email, 
-        &data.Password, &data.Last_login.Time, &data.Role_id, &data.CreatedAt, &data.UpdatedAt)
+        &data.Password, &data.Last_login, &data.Role_id, &data.CreatedAt, &data.UpdatedAt)
     if err != nil {
         return data, err
     }
